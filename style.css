@@ -1,0 +1,16 @@
+* {
+    font-family: 'Dancing Script', cursive;
+}
+
+button:hover,
+button {
+    transition: .5s !important;
+}
+
+nav .hidden {
+    transition: 1s;
+}
+
+.swal-text {
+    font-size: 25px;
+}

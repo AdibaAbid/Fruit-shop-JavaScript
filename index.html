@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest Tailwind compiled and minified CSS -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <!-- fontawesome link -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <!-- Alert cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="style.css">
+    <title>Fruit Shop</title>
+</head>
+
+<body>
+    <header class="text-center uppercase py-3 px-3 text-gray-800 bg-teal-400 text-2xl md:text-3xl">
+        <nav class="items-center flex flex-col ">
+            <h1 class="font-sans font-semibold">Welcome to Quick Fruit Shop <i class="fas fa-store text-blue-800"></i></h1>
+            <button class="text-lg md:text-3xl bg-transparent my-2 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded focus:outline-none" onclick="showCart()">Enter your Maximum Budget</button>
+            <div class="flex space-between hidden  ">
+                <input type="number" name="amount" id="amount" placeholder="Add Amount " class="shadow appearance-none border rounded w-full block  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <button class=" ml-2 px-4 py-0 bg-blue-800 rounded text-gray-100 focus:outline-none hover:bg-blue-700" onclick="wallet()"><i class="fas fa-shopping-cart text-xl"></i></button>
+            </div>
+            <div class="remaining-balance">
+                <h2 class="text-base w-full pt-4 hidden uppercase">Your Budget is <span class="font-bold"></span></h2>
+                <h2 class="text-base hidden">Remaining Balance <span></span></h2>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="fruit-basket flex justify-center flex-wrap mx-4  ">
+            <div class="cursor-pointer hover:bg-blue-100 px-4 py-2 mx-4 my-2 text-center inline-block border rounded">
+                <h3 class="text-3xl text-blue-900 font-bold">Mango</h3>
+                <img src="images/mango.png" alt="Mango Picture" class="h-56 w-56 md:h-48 md:w-48" />
+                <h4 class="text-2xl text-blue-900">Price: Rs 15</h4>
+                <div>
+                    <button onclick="removeItem('mango')" class=" text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">-</button>
+
+                    <span id="mangoQuantity" class="text-2xl"> 0 </span>
+
+                    <button onclick="addItem('mango')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">+</button>
+                </div>
+            </div>
+
+            <div class="cursor-pointer hover:bg-blue-100 px-4 py-2 mx-4 my-2 text-center inline-block border rounded">
+                <h3 class="text-3xl text-blue-900 font-bold">Apple</h3>
+                <img src="images/apple.png" alt="Apple Picture" class="h-56 w-56 md:h-48 md:w-48" />
+                <h4 class="text-2xl text-blue-900">Price: Rs 10</h4>
+                <div>
+                    <button onclick="removeItem('apple')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">-</button>
+
+                    <span id="appleQuantity" class="text-2xl"> 0 </span>
+
+                    <button onclick="addItem('apple')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">+</button>
+                </div>
+            </div>
+
+            <div class="cursor-pointer hover:bg-blue-100 px-4 py-2 mx-4 my-2 text-center inline-block border rounded">
+                <h3 class="text-3xl text-blue-900 font-bold">Orange</h3>
+                <img src="images/orange.png" alt="Orange Picture" class="h-56 w-56 md:h-48 md:w-48" />
+                <h4 class="text-2xl text-blue-900">Price: Rs 8</h4>
+                <div>
+                    <button onclick="removeItem('orange')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">-</button>
+
+                    <span id="orangeQuantity" class="text-2xl"> 0 </span>
+
+                    <button onclick="addItem('orange')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">+</button>
+                </div>
+            </div>
+
+            <div class="cursor-pointer hover:bg-blue-100 px-4 py-2 mx-4 my-2 text-center inline-block border rounded">
+                <h3 class="text-3xl text-blue-900 font-bold">Grapes</h3>
+                <img src="images/grapes.png" alt="Grapes Picture" class="h-56 w-56 md:h-48 md:w-48" />
+                <h4 class="text-2xl text-blue-900">Price: Rs 12</h4>
+                <div>
+                    <button onclick="removeItem('grapes')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">-</button>
+
+                    <span id="grapesQuantity" class="text-2xl"> 0 </span>
+
+                    <button onclick="addItem('grapes')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">+</button>
+                </div>
+            </div>
+
+            <div class="cursor-pointer hover:bg-blue-100 px-4 py-2 mx-4 my-2 text-center inline-block border rounded">
+                <h3 class="text-3xl text-blue-900 font-bold">Java Pulm</h3>
+                <img src="images/java-pulm.png" alt="Java Picture" class="h-56 w-56 md:h-48 md:w-48" />
+                <h4 class="text-2xl text-blue-900">Price: Rs 10</h4>
+                <div>
+                    <button onclick="removeItem('java-pulm')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">-</button>
+
+                    <span id="javaQuantity" class="text-2xl"> 0 </span>
+
+                    <button onclick="addItem('java-pulm')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">+</button>
+                </div>
+            </div>
+
+            <div class="cursor-pointer hover:bg-blue-100 px-4 py-2 mx-4 my-2 text-center inline-block border rounded">
+                <h3 class="text-3xl text-blue-900 font-bold">Pomegranate</h3>
+                <img src="images/pom.png" alt="Pomegranate Picture" class="h-56 w-56 md:h-48 md:w-48" />
+                <h4 class="text-2xl text-blue-900">Price: Rs 20</h4>
+                <div>
+                    <button onclick="removeItem('pomegranate')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">-</button>
+
+                    <span id="pomQuantity" class="text-2xl"> 0 </span>
+
+                    <button onclick="addItem('pomegranate')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">+</button>
+                </div>
+            </div>
+
+            <div class="cursor-pointer hover:bg-blue-100 px-4 py-2 mx-4 my-2 text-center inline-block border rounded">
+                <h3 class="text-3xl text-blue-900 font-bold">Strawberry</h3>
+                <img src="images/strawbery.png" alt="Strawberry Picture" class="h-56 w-56 md:h-48 md:w-48" />
+                <h4 class="text-2xl text-blue-900">Price: Rs 15</h4>
+                <div>
+                    <button onclick="removeItem('strawberry')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">-</button>
+
+                    <span id="strawberryQuantity" class="text-2xl"> 0 </span>
+
+                    <button onclick="addItem('strawberry')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">+</button>
+                </div>
+            </div>
+
+            <div class="cursor-pointer hover:bg-blue-100 px-4 py-2 mx-4 my-2 text-center inline-block border rounded">
+                <h3 class="text-3xl text-blue-900 font-bold">Cherry</h3>
+                <img src="images/cherry.png" alt="Cherry Picture" class="h-56 w-56 md:h-48 md:w-48" />
+                <h4 class="text-2xl text-blue-900">Price: Rs 25</h4>
+                <div>
+                    <button onclick="removeItem('cherry')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">-</button>
+
+                    <span id="cherryQuantity" class="text-2xl"> 0 </span>
+
+                    <button onclick="addItem('cherry')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">+</button>
+                </div>
+            </div>
+
+            <div class="cursor-pointer hover:bg-blue-100 px-4 py-2 mx-4 my-2 text-center inline-block border rounded">
+                <h3 class="text-3xl text-blue-900 font-bold">Banana</h3>
+                <img src="images/banana.png" alt="Banana Picture" class="h-56 w-56 md:h-48 md:w-48" />
+                <h4 class="text-2xl text-blue-900">Price: Rs 12</h4>
+                <div>
+                    <button onclick="removeItem('banana')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">-</button>
+
+                    <span id="bananaQuantity" class="text-2xl"> 0 </span>
+
+                    <button onclick="addItem('banana')" class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-4 rounded-full focus:outline-none text-lg font-bold ">+</button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <h2 class="text-center px-2 py-1 bg-teal-400 md:text-xl "><i class="fas fa-copyright"></i> Copyright 2020. Created By with <i class="fas fa-heart text-pink-700"></i> Adi</h2>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <!-- JS File -->
+    <script src="index.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
