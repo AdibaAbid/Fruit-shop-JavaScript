@@ -1,5 +1,5 @@
 * {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Courgette', cursive;
 }
 
 button:hover,
@@ -13,4 +13,18 @@ nav .hidden {
 
 .swal-text {
     font-size: 25px;
+}
+
+.remaining-balance {
+    position: fixed;
+    top: 160px;
+    right: 0px;
+    width: 25%;
+}
+
+@media screen and (min-width: 786px) {
+    .remaining-balance {
+        width: 30%;
+        top: 116px;
+    }
 }

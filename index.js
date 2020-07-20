@@ -28,13 +28,13 @@ const applePrice = 10,
 function showCart() {
     document.querySelector('.hidden').style.display = 'flex';
 }
-
+// Wallet balance
 function wallet() {
     let inputValue = document.getElementById('amount').value
-    inputValue = parseInt(inputValue)
+
     remainingBalanceWallet += inputValue
-    debugger
-    if (inputValue == '') {
+        // debugger
+    if (inputValue === '') {
 
         swal({
             text: "Your Wallet is Empty!",
@@ -45,7 +45,7 @@ function wallet() {
         remainingBalance[1].innerHTML = 'Rs ' + balance
         totalBalance[1].style.display = 'block'
     } else {
-
+        inputValue = parseInt(inputValue)
         balance += inputValue
             // remainingBalanceWallet -= inputValue
 
@@ -63,10 +63,11 @@ function wallet() {
 
 }
 
+//Add Button
+
 function addItem(item) {
 
-    debugger
-
+    // debugger
     if (remainingBalanceWallet == 0 || remainingBalanceWallet <= 0) {
         swal({
             title: 'Looks Like You do not have enough Balance',
@@ -314,18 +315,15 @@ function addItem(item) {
                     });
                 }
                 break
-
-
-
         }
 
     }
 }
 
 
-
+// Remove Button
 function removeItem(item) {
-    debugger
+    // debugger
     if (bill === 0) {
         swal({
             text: "There is NO more Quantity Left",
